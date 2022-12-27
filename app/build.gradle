@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.yanzhenjie.andserver'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId 'com.usbtv.demo.exo'
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        ndk{
+            abiFilters  "armeabi-v7a","x86"
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+       // exclude 'org/mozilla/javascript/tools/debugger/test.js'
+       // exclude 'org/mozilla/javascript/resources/Messages.properties'
+       // exclude 'org/mozilla/javascript/**'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+
+    //butterknife
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+
+    implementation 'com.yanzhenjie.andserver:api:2.1.9'
+    annotationProcessor 'com.yanzhenjie.andserver:processor:2.1.9'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+
+   // implementation project(':AndroidVideoCache')
+    implementation 'net.sourceforge.javacsv:javacsv:2.0'
+    implementation 'com.alibaba:fastjson:1.2.3'
+    implementation group: 'com.j256.ormlite', name: 'ormlite-android', version: '5.3'
+    implementation "com.squareup.retrofit2:converter-gson:2.5.0"
+    //implementation 'io.apisense:rhino-android:1.0'
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+    //implementation 'org.jsoup:jsoup:1.12.1'
+
+    //implementation 'com.henryblue.library:tvrecyclerview:1.2.4'
+    //implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    //implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.tvprovider:tvprovider:1.0.0'
+    //implementation 'com.gitee.nurApplication:NurVideoPlayer:2.1.9'
+    //implementation project(':nurvideoplayer')
+
+    implementation 'com.king.zxing:zxing-lite:1.1.7-androidx'
+
+    //implementation 'com.eclipsesource.j2v8:j2v8_android_armv7l:2.2.1'
+    //implementation 'com.eclipsesource.j2v8:j2v8_win32_x86_64:2.2.1'
+    implementation 'com.eclipsesource.j2v8:j2v8:6.2.0@aar'
+    // implementation 'com.google.android.exoplayer:exoplayer:2.13.2'
+    // implementation 'com.google.android.exoplayer:exoplayer-ui:2.11.3'
+    //implementation 'com.danikula:videocache:2.6.4'
+    //完整版引入
+   // implementation 'com.shuyu:GSYVideoPlayer:8.3.3'
+    implementation 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:8.3.3'
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.core:core-ktx:1.6.0'
+            force 'androidx.core:core:1.6.0'
+        }
+    }
+}
